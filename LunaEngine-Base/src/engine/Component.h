@@ -1,3 +1,5 @@
+#include <memory>
+
 class Component
 {
 public:
@@ -7,9 +9,9 @@ public:
 	std::shared_ptr<Environment> getEnvironment();
 private:
 	std::weak_ptr<Entity> HostEntity
-	void onInit();
-	void onBegin();
-	void onTick();
-	void onDisplay();
+	virtual void onInit();
+	virtual void onBegin();
+	virtual void onTick();
+	virtual void onDisplay();
 
 };
