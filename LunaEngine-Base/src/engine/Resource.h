@@ -1,5 +1,5 @@
 class Resource{
 Public:
 Private:
-std::string path;
+ virtual std::string path;
 };
