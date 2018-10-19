@@ -1,5 +1,7 @@
 #include "Core.h"
 #include "Entity.h"
+#include GL/glew.h
+
 
 int WINDOW_WIDTH =800;
 int  WINDOW_HEIGHT =600;
