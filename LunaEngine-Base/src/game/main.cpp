@@ -1,26 +1,27 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
+#include "core.h"
+#include "Entity.h"
+#include "Component.h"
+#include "MeshRender.h"
+
+
 
 
 
 int main()
 {
-	SDL_Window *window =SDL_CreateWindow("Screen",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,780,640,SDL_WINDOW_RESIZABLE|SDL_WINDOW_OPENGL);
-	//init checks
-	if(!SDL_GL_CreateContext(window))
-	{
-		throw std::exception();
-	}	
-	if(glewInit() !=GLEW_OK)
-	{
-		throw std::exception();
-	}
+	//Pre-load/ initialize things here
+	std::shared_ptr<Core> baseCore = Core::initialize();
+		
+	std::shared_ptr<Entity> testEntity= baseCore->addEntity();
 
-	std::cout<<"Hello World" <<std::endl;
+	std::shared_ptr<MeshRenderer> testMR = testEntity->addComponent<MeshRenderer>();
+	
+	//begin loop here
+	baseCore->start();
+	
 
-	glClearColor(1.0f,1.0f,0.0f,1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	SDL_GL_SwapWindow(window);
 	return 0;
 }

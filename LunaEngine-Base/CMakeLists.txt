@@ -17,11 +17,18 @@ if(MSVC)
   add_definitions(-DSDL_MAIN_HANDLED)
 endif()
 
+add_library(LunaEngine
+src/engine/core.cpp
+src/engine/Keyboard.cpp
+src/engine/Environment.cpp
+src/engine/Component.cpp
+src/engine/Entity.cpp
+
+
+)
 add_executable(game
 src/game/main.cpp
-src/engine/core.h
-src/engine/Keyboard.h
-src/engine/Environment.h
+
 )
 
 if(MSVC)
@@ -33,6 +40,9 @@ else()
     SDL2 GLU GLEW GL
   )
 endif()
+
+target_link_libraries(game LunaEngine)
+
 
 if(MSVC)
   add_custom_command(TARGET game POST_BUILD

@@ -1,3 +1,6 @@
+#include "Material.h"
+#include "Mesh.h"
+
 class MeshRenderer: public Component 
 {
 private:

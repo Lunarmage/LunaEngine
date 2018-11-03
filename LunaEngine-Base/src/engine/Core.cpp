@@ -23,6 +23,8 @@ std::shared_ptr<Core> Core::initialize()
 	BaseCore->running =false;
 	BaseCore->self=BaseCore;
 	
+	//Initialise Visuals/graphics first
+
 	//if(SDL_Init(SDL_INIT_VIDEO) <0)
 	{
 	//throw except
@@ -36,8 +38,10 @@ std::shared_ptr<Core> Core::initialize()
 	}
 
 	//do all other inits
-	//if(glewInit() !=GLEW_OK)
-	//{//throwexecption}
+	if(glewInit() !=GLEW_OK)
+	{//throwexecption}
+
+	//initialise audio
 
 }
 
@@ -56,15 +60,31 @@ void Core::start()
 			}
 		}
 		//loop every entity tick 
+		for_each(Entities.begin(), Entities.end(), doTick);
+
 		glClearColor(0.0f,0.0f,0.0f,1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
 		//loop every entity display
+		for_each(Entities.begin(), Entities.end(), doDisplay);
+
 		SDL_GL_SwapWindow(window);
 	}
 
 }
 
+void doTick(std::shared__ptr<Entity> tarEnt)
+{
+	tarEnt->tick();
+}
+
+void doDisplay(std::shared__ptr<Entity> tarEnt)
+{
+	tarEnt->display();
+}
+
 void Core::stop()
 {
 running=false;
+
 }
