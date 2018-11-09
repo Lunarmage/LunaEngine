@@ -1,14 +1,35 @@
+
+
+#include <memory>
+
+
+
 #include "Resource.h"
+
+
+#ifndef MESH_H
+#define MESH_H
+
+
 
 class Mesh:public Resource
 {
 public:
 ~Mesh();
-void addFace(
 
+
+std::shared_ptr<Mesh> loadAndCreate(std::string path);
+int getVertexCount();
+void setBuffer(std::string attribute, VertexBuffer *buffer);
+
+GLuint returnID();
 
 private:
-std::shared_ptr<Mesh> create();
-std::shared_prt<Mesh> load(std::string path);
+void setID();
 
+std::vector<VertexBuffer *> buffers;
+
+GLuint id;
 };
+
+#endif // !MESH_H

@@ -1,19 +1,14 @@
-#include Resource.h
 
+class Resource;
 
 class Sound:public Resource
 {
-Public:
+public:
 	void Load (std::string path);
 	void Play();
-Private:
+private:
 
 
 };
 
 
-void Load(std::string path)
-{
-
-
-}

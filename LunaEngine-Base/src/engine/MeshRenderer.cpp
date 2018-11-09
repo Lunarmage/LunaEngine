@@ -1,5 +1,5 @@
 #include "MeshRenderer.h"
-
+#include "Mesh.h"
 
 
 void MeshRenderer::onInit()
@@ -9,6 +9,20 @@ void MeshRenderer::onInit()
 
 void MeshRenderer::onDisplay()
 {
+
+	//assign shaderProgram
+	//glUseProgram(material->MatAtt->shader)
+
+
+	//assign texture
+	glActiveTexture(GL_TEXTURE0 +1);
+	glBindTexture(GL_TEXTURE_2D, //textureid)
+	
+	//draw mesh
+	glBindVertexArray(Mesh->getID());
+	glDrawArrays(GL_TRIANGLES, 0, Mesh->getvetexcount());
+	
+	glBindVertexArray(0);
 
 }
 

@@ -1,13 +1,22 @@
+
+
 #include <memory>
 #include <vector>
-#include "Environment.h"
-#include "Keyboard.h"
+
+
 #include <SDL2/SDL.h>
+
+class Entity;
+class Keyboard;
+class Environment;
+
+
 
 class Core
 {
+	
 public:
-	std::shared_ptr<Cire> initialize();	
+	static std::shared_ptr<Core> initialize();	
 
 	void start();
 	void stop();
@@ -20,5 +29,7 @@ private:
 	std::vector<std::shared_ptr<Entity>> Entities;
 	SDL_Window *window;
 	bool running;
+	std::weak_ptr<Core> self;
+
 };
 

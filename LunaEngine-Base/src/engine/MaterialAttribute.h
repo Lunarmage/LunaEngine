@@ -1,6 +1,7 @@
 #include <memory>
 #include <string>
 
+class Texture;
 
 struct MaterialAttribute
 {

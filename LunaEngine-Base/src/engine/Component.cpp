@@ -3,8 +3,9 @@
 
 std::shared_ptr<Entity> Component::getEntity()
 {
-	return entity.lock();
+	return HostEntity.lock();
 }
+
 std::shared_ptr<Core> Component::getCore()
 {
 	return getEntity()->getCore();

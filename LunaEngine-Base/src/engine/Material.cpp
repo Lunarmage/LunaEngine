@@ -1,4 +1,6 @@
 #include "Material.h"
+#include "Shader.h"
+#include "Texture.h"
 
 void Material::setValue(std::string name, std::weak_Ptr<Texture> value)
 {
@@ -21,5 +23,5 @@ std::shared_ptr<Shader> Material::getShader()
 
 void Material::setShader(std::weak_ptr<Shader> newShader);
 {
-	shader= newShader
+	shader= newShader;
 }

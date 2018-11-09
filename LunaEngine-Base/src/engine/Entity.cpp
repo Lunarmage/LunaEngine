@@ -1,32 +1,33 @@
 #include "Entity.h"
+#include <algorithm>
+#include "Core.h"
 
-void Entity::tick()
-{	
-	for_each(components.begin(), components.end(), doTick);
-}
 
-void Entity::display()
-{	
-	/*
-	//for each Component in components
-	{
-		//if not end  increase iterator
-		iterator->onDisplay();
-	}
-	*/
-}
+
+
 
 std::shared_ptr<Core> Entity::getCore()
 {
 	return core.lock();
 }
 
-void doTick(std::shared_ptr<Component> thing)
+void Entity::tick()
 {
-	if (!(thing->began))
+	for (std::vector<std::shared_ptr<Component> >::iterator it = components.begin();
+		it != components.end(); it++)
 	{
-		thing->onBegin();
-		thing->began=true;	
+		(*it)->onTick();
 	}
-	thing->onTick();
+}
+
+
+
+void Entity::setSelf(std::weak_ptr<Entity> ref)
+{
+	self = ref;
+}
+
+void Entity::setCore(std::weak_ptr<Core> ref)
+{
+	core = ref;
 }

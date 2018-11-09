@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.6)
 project(LUNAENGINE)
 
+
+include_directories(
+  src
+  contrib
+)
+
 if(MSVC)
   include_directories(
     contrib/msvc-windows-x86/glew/include
@@ -18,14 +24,20 @@ if(MSVC)
 endif()
 
 add_library(LunaEngine
-src/engine/core.cpp
+src/engine/Core.cpp
 src/engine/Keyboard.cpp
 src/engine/Environment.cpp
 src/engine/Component.cpp
 src/engine/Entity.cpp
 
 
+
 )
+
+
+
+
+
 add_executable(game
 src/game/main.cpp
 

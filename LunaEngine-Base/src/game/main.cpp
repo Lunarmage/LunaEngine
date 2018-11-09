@@ -1,10 +1,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
-#include <GL/glew.h>
-#include "core.h"
-#include "Entity.h"
-#include "Component.h"
-#include "MeshRender.h"
+#include <GL\glew.h>
+
+#include "engine\BaseInclude.h"
 
 
 
@@ -17,7 +15,7 @@ int main()
 		
 	std::shared_ptr<Entity> testEntity= baseCore->addEntity();
 
-	std::shared_ptr<MeshRenderer> testMR = testEntity->addComponent<MeshRenderer>();
+	//std::shared_ptr<MeshRenderer> testMR = testEntity->addComponent<MeshRenderer>();
 	
 	//begin loop here
 	baseCore->start();

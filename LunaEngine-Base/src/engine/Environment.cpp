@@ -1,6 +1,6 @@
-#include Environment.h
+#include "Environment.h"
 
-float getDeltaTime()
+float Environment::getDeltaTime()
 {
 	return deltaTime;
 }

@@ -2,6 +2,7 @@ struct EngineVec3
 {
 int x,y,z;
 }
+#include "Component.h"
 
 class Transform:: public Component
 {

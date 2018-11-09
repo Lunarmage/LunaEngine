@@ -1,8 +1,16 @@
+#include<memory>
+#include <vector>
 #include "Component.h"
+
+
+class Core;
+
+
 class Entity
 {
+	friend class Core;
 public:
-	std::weak_ptr<Core> getCore():
+	std::shared_ptr<Core> getCore();
 	/* template for component additon and init
 	template <typename T>
 	std::shared_ptr<T> getComponent()
@@ -28,11 +36,14 @@ public:
 	}
 	//Add template copies which accept initialisation
 	*/
+	void setSelf(std::weak_ptr<Entity> ref);
+	void setCore(std::weak_ptr<Core> ref);
 private:
 	std::weak_ptr<Entity> self;
 	std::weak_ptr<Core> core;
 	std::vector<std::shared_ptr<Component>> components;
 	void tick();
 	void display();
+
 
 };
