@@ -38,12 +38,14 @@ public:
 	*/
 	void setSelf(std::weak_ptr<Entity> ref);
 	void setCore(std::weak_ptr<Core> ref);
+	bool isKill() {return kill;}
 private:
 	std::weak_ptr<Entity> self;
 	std::weak_ptr<Core> core;
 	std::vector<std::shared_ptr<Component>> components;
 	void tick();
 	void display();
+	bool kill =false;
 
 
 };

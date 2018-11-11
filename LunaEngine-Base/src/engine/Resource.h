@@ -8,7 +8,8 @@
 #include <string>
 class Resource
 {
-
+public:
+	std::string getPath();
 	
 protected:
 	std::string path;

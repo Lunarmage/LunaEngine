@@ -29,6 +29,10 @@ src/engine/Keyboard.cpp
 src/engine/Environment.cpp
 src/engine/Component.cpp
 src/engine/Entity.cpp
+src/engine/Resources.cpp
+src/engine/Resource.cpp
+src/engine/Mesh.cpp
+
 
 
 

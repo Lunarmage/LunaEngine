@@ -1,8 +1,8 @@
-
+#include <GL\glew.h>
 
 #include <memory>
-
-
+#include <string>
+#include"VertexBuffer.h"
 
 #include "Resource.h"
 
@@ -15,10 +15,10 @@
 class Mesh:public Resource
 {
 public:
+
 ~Mesh();
 
-
-std::shared_ptr<Mesh> loadAndCreate(std::string path);
+std::shared_ptr<Mesh> load(std::string path);
 int getVertexCount();
 void setBuffer(std::string attribute, VertexBuffer *buffer);
 
@@ -28,8 +28,11 @@ private:
 void setID();
 
 std::vector<VertexBuffer *> buffers;
+void splitString(std::string& input, char splitter, std::vector<std::string>& output);
 
+void splitStringWhitespace(std::string& input, std::vector<std::string>& output);
 GLuint id;
+
 };
 
 #endif // !MESH_H

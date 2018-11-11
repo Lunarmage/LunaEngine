@@ -1,15 +1,22 @@
 
+#include <vector>
+#include <memory>
+#include <string>
+#include "Resource.h"
+
 
 class Resources
 {
 public:
-	int temp;
-	/*
-std::shared_ptr<T> create<T>();
-std::shared_ptr<T> load<T>(std::string path);
-*/
+
+	template<class T>
+	std::shared_ptr<T> load(std::string path);
+
+
+	
 
 private:
-//std::list<std::shared_ptr<Resource>> resources;
+	std::vector<Resource> resources;
 
 };
+
