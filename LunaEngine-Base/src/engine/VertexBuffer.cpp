@@ -1,17 +1,18 @@
 #include "VertexBuffer.h"
 
 
-VertexBuffer::VertexBuffer() : components(0), dirty(false)
+VertexBuffer::VertexBuffer()
 {
   glGenBuffers(1, &id);
-
+  components = 0;
+  dirty = false;
   if(!id)
   {
     throw std::exception();
   }
 }
 
-void add(glm::vec2 value)
+void VertexBuffer::add(glm::vec2 value)
 {
 	if (!components)
 	{

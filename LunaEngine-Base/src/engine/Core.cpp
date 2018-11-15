@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include <GL/glew.h>
 #include <algorithm>
-#include "Resources.h"
+//#include "Resources.h"
 
 
 int WINDOW_WIDTH =800;
@@ -30,10 +30,11 @@ std::shared_ptr<Resources> Core::getResources()
 std::shared_ptr<Core> Core::initialize()
 {
 	
-	std::shared_ptr<Resources> resources = std::make_shared<Resources>();
+	std::shared_ptr<Resources> Sresources = std::make_shared<Resources>();
 	std::shared_ptr<Core> BaseCore =std::make_shared<Core>();
 	BaseCore->running =false;
 	BaseCore->self=BaseCore;
+	BaseCore->resources = Sresources;
 	
 	//Initialise Visuals/graphics first
 
@@ -121,10 +122,8 @@ void Core::stop()
 }
 
 
-void Core::cleanUP()
+
+Core::~Core()
 {
 	SDL_Quit();
-	window = nullptr;
-	
-
 }

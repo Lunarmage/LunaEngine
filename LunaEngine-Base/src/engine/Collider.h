@@ -2,7 +2,7 @@
 
 class Collider:public Component
 {
-private:
+protected:
 //std::shared_ptr<RigidBody> rigidBody;
 bool active;
 

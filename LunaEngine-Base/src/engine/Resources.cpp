@@ -19,8 +19,9 @@ std::shared_ptr<T> Resources::load(std::string path)
 	}
 
 	//if not create
-	std::shared_ptr<T> temp= std::make_shared<T>();
+	std::shared_ptr<T> temp = std::make_shared<T>();
 	temp.load(std::string path);
 	resources.push_back(temp);
 	return temp;
+
 }

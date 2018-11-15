@@ -11,8 +11,6 @@ public:
 
 	template<class T>
 	std::shared_ptr<T> load(std::string path);
-
-
 	
 
 private:

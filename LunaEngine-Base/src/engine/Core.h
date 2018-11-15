@@ -1,4 +1,4 @@
-
+#include "Resources.h"
 
 #include <memory>
 #include <vector>
@@ -10,13 +10,14 @@ class Entity;
 class Keyboard;
 class Environment;
 
-class Resources;
+//class Resources;
 
 
 class Core
 {
 	
 public:
+	~Core();
 	static std::shared_ptr<Core> initialize();	
 	
 	std::shared_ptr<Resources> getResources();

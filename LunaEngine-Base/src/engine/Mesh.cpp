@@ -20,9 +20,9 @@ int Mesh::getVertexCount()
 }
 
 
-std::shared_ptr<Mesh> Mesh::load(std::string path)
-{		
-	
+void Mesh::load(std::string path)
+{
+
 	glGenVertexArrays(1, &id);
 	//check id works
 
@@ -50,7 +50,7 @@ std::shared_ptr<Mesh> Mesh::load(std::string path)
 		if (splitLine.size() < 1) continue;
 
 		//if line starts with V it's position vertex
-		if (splitLine.at(0) == "V")
+		if (splitLine.at(0) == "v")
 		{	//put position vecs into a Vector of positions		
 			if (!positionBuffer) positionBuffer = new VertexBuffer();
 			positions.push_back(glm::vec3(
@@ -198,6 +198,7 @@ void Mesh::splitString(std::string& input, char splitter, std::vector<std::strin
 	{
 		output.push_back(curr);
 	}
+
 }
 
 void Mesh::splitStringWhitespace(std::string& input, std::vector<std::string>& output) 

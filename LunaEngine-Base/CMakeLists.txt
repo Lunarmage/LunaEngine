@@ -32,10 +32,17 @@ src/engine/Entity.cpp
 src/engine/Resources.cpp
 src/engine/Resource.cpp
 src/engine/Mesh.cpp
+src/engine/MeshRenderer.cpp
+src/engine/Transform.cpp
+src/engine/Material.cpp
+src/engine/Texture.cpp
+src/engine/MaterialAttribute.h
+src/engine/Shader.cpp
+src/engine/VertexBuffer.cpp
 
 
 
-
+contrib/stb_image/stb_image.cpp
 )
 
 

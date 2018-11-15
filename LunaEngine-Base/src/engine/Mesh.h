@@ -18,7 +18,7 @@ public:
 
 ~Mesh();
 
-std::shared_ptr<Mesh> load(std::string path);
+void load(std::string path);
 int getVertexCount();
 void setBuffer(std::string attribute, VertexBuffer *buffer);
 

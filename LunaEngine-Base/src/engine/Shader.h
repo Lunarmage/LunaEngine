@@ -18,6 +18,7 @@ void create(std::string vert, std::string frag);
 void setUniform(std::string name, float value);
 void setUniform(std::string name, std::weak_ptr<Texture> value);
 void setUniform(std::string name, glm::vec3 value);
+void setUniform(std::string name, glm::vec4 value);
 
 GLuint getID();
 private:

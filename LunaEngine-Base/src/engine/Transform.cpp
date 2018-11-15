@@ -1,29 +1,29 @@
 #include "Transform.h"
 
-void Transform:translate(EngineVec3 amount)
+void Transform::translate(glm::vec3 amount)
 {
 	localPosition +=amount;
 }
 
-void Transform:rotate(EngineVec3 amount)
+void Transform::rotate(glm::vec3 amount)
 {
 	localRotation +=amount;
 }
 
-void Transform:scale(EngineVec3 amount)
+void Transform::scale(glm::vec3 amount)
 {
 	localScale +=amount;
 }
 
-void Transform:setLocalPosition(EngineVec3 amount)
+void Transform::setLocalPosition(glm::vec3 input)
 {
-	localPosition=amount;
+	localPosition=input;
 }
-void Transform:setLocalRotation(EngineVec3 amount)
+void Transform::setLocalRotation(glm::vec3 input)
 {
-	localRotation=amount;
+	localRotation=input;
 }
-void Transform:setLocalScale(EngineVec3 amount)
+void Transform::setLocalScale(glm::vec3 input)
 {
-	localScale=amount;
+	localScale=input;
 }

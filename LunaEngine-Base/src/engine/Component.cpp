@@ -11,3 +11,13 @@ std::shared_ptr<Core> Component::getCore()
 {
 	return getEntity()->getCore();
 }
+
+void Component::onDisplay()
+{
+
+}
+
+void Component::onTick()
+{
+
+}

@@ -13,7 +13,7 @@ void Shader::create(std::string vert, std::string frag)
 		{
 		std::string line;
 		std::getline(file, line);
-		vertS+= line +"\n"		
+		vertS += line + "\n";
 		}
 
 	//now open and read fragment shader
@@ -24,7 +24,7 @@ void Shader::create(std::string vert, std::string frag)
 		{
 		std::string line;
 		std::getline(file, line);
-		fragS+= line +"\n"		
+		fragS += line + "\n";
 		}
 	//set up shaders for GL
 	const GLchar *VertShad =vertS.c_str();
@@ -71,8 +71,8 @@ void Shader::create(std::string vert, std::string frag)
 
 void Shader::setUniform (std::string name, glm::vec4 value)
 {
-	GLint uniformID = glGetUniformLocation(id, name.c_str())
-	if(uniformId == -1)
+	GLint uniformID = glGetUniformLocation(id, name.c_str());
+	if(uniformID == -1)
  		 {
   		  throw std::exception();
   		}
@@ -98,10 +98,10 @@ void Shader::setUniform(std::string name, float value)
 
 }
 
-void Shader::setUniform (std::string name, Texture *texture)
+void Shader::setUniform (std::string name, std::weak_ptr<Texture> value)
 {
-	GLint uniformID = glGetUniformLocation(id, name.c_str())
-	if(uniformId == -1)
+	GLint uniformID = glGetUniformLocation(id, name.c_str());
+	if(uniformID == -1)
  		 {
   		  throw std::exception();
   		}
