@@ -22,7 +22,7 @@ public:
 			std::shared_ptr<T> TargetComponent = std::dynamic_pointer_cast<T>(components.at(i));
 			if (TargetComponent)
 			{
-				return TargetComponent
+				return TargetComponent;
 			}
 		}
 

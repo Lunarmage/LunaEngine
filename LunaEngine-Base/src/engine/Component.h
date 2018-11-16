@@ -18,7 +18,7 @@ public:
 	std::shared_ptr<Keyboard> getKeyboard();
 	std::shared_ptr<Environment> getEnvironment();
 	//std::shared_ptr<Resources> getResources();
-private:
+protected:
 	std::weak_ptr<Entity> HostEntity;
 	virtual void onInit();
 	virtual void onBegin();

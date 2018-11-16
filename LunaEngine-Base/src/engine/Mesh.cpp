@@ -2,7 +2,10 @@
 #include <fstream>
 
 
+Mesh::~Mesh()
+{
 
+}
 
 GLuint Mesh::returnID()
 {
@@ -26,8 +29,14 @@ void Mesh::load(std::string path)
 	glGenVertexArrays(1, &id);
 	//check id works
 
+	buffers.resize(10);
+
 	std::ifstream file(path.c_str());
 	//check file is open
+	if (!file)
+	{
+		throw std::exception();
+	}
 	std::string line;
 	std::vector <std::string> splitLine;
 	std::vector<glm::vec3> positions;
@@ -111,15 +120,20 @@ void Mesh::load(std::string path)
 			if (texCoordBuffer) texCoordBuffer->add(texCoords.at(atoi(subsplit.at(1).c_str()) - 1));
 			if (normalBuffer) normalBuffer->add(normals.at(atoi(subsplit.at(2).c_str()) - 1));
 		}
-
+	}
 		setBuffer("in_Position", positionBuffer);
-		if (texCoordBuffer) setBuffer("in_TexCoord", texCoordBuffer);
-		if (normalBuffer) setBuffer("in_Normal", normalBuffer);
+		if (texCoordBuffer)
+		{
+			setBuffer("in_TexCoord", texCoordBuffer);
+		}
+		if (normalBuffer)
+		{
+			setBuffer("in_Normal", normalBuffer);
+		}
 
 		setID();
-	}
-
-	return ;
+	
+		return;
 }
 
 void Mesh::setBuffer(std::string attribute, VertexBuffer *buffer)

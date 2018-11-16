@@ -3,12 +3,25 @@
 #include <fstream>
 #include <iostream>
 
+
+GLuint Shader::getID()
+{
+	return id;
+}
+
+void Shader::load(std::string path)
+{
+	this->path = path;
+}
 void Shader::create(std::string vert, std::string frag)
 {
 	//firstly read in vertex shader
 	std::ifstream file(vert.c_str());
 	std::string vertS;
-
+	if (!file)
+	{
+		throw std::exception();
+	}
 	while(!file.eof())
 		{
 		std::string line;
@@ -20,12 +33,19 @@ void Shader::create(std::string vert, std::string frag)
 	file.close();
 	file.open(frag.c_str());
 	std::string fragS;
+
+	if (!file)
+	{
+		throw std::exception();
+	}
 	while(!file.eof())
 		{
 		std::string line;
 		std::getline(file, line);
 		fragS += line + "\n";
 		}
+
+
 	//set up shaders for GL
 	const GLchar *VertShad =vertS.c_str();
 	GLuint vertShadID =glCreateShader(GL_VERTEX_SHADER);
@@ -33,6 +53,7 @@ void Shader::create(std::string vert, std::string frag)
 	glCompileShader(vertShadID);
 	GLint success=0;
 	glGetShaderiv(vertShadID, GL_COMPILE_STATUS, &success);
+
 	if (!success)
 	{//error
 	}	
@@ -42,6 +63,7 @@ void Shader::create(std::string vert, std::string frag)
 	glShaderSource(fragShadID,1,&FragShad,NULL);
 	glCompileShader(fragShadID);
 	glGetShaderiv(fragShadID, GL_COMPILE_STATUS, &success);
+
 	if (!success)
 	{//error
 	}
@@ -59,9 +81,11 @@ void Shader::create(std::string vert, std::string frag)
 
 	glLinkProgram(id);
 	glGetProgramiv(id,GL_LINK_STATUS, &success);
+
 	if (!success)
 	{//error
 	}
+
 	glDetachShader(id, vertShadID);
 	glDeleteShader(vertShadID);
 	glDetachShader(id, fragShadID);
@@ -105,13 +129,16 @@ void Shader::setUniform (std::string name, std::weak_ptr<Texture> value)
  		 {
   		  throw std::exception();
   		}
+
+
+	
 	//step through resources till *Texture.id = uniformid
 		/*
 		glUseProgram(id);
-		glUniform1i(uniformId, *forloopcounter*);
+		glUniform1i(uniformID, *forloopcounter*);
    		glUseProgram(0);
      		 return;
-
-		*/
+			 */
+		
 	//if no texture matches (which it should but still) create default and put into resources, use that as uniform
 }

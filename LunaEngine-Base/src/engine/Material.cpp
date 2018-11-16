@@ -1,6 +1,6 @@
-#include "Material.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "Material.h"
 
 void Material::setValue(std::string name, std::weak_ptr<Texture> value)
 {

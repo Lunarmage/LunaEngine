@@ -6,6 +6,10 @@
 #include "Component.h"
 #include "MeshRenderer.h"
 #include "Resource.h"
+#include "Mesh.h"
+#include "Texture.h"
+#include "Shader.h"
+#include "Sound.h"
 
 
 

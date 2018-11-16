@@ -25,7 +25,7 @@ void Texture::load(std::string path)
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 
-
+		this->path = path;
 	
 }
 

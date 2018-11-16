@@ -1,7 +1,9 @@
+
 #include "MaterialAttribute.h"
 #include <memory>
 #include <string>
 #include <GL\glew.h>
+
 
 class Shader;
 class Texture;

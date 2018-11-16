@@ -14,7 +14,7 @@ class Shader: public Resource
 {
 public:
 void create(std::string vert, std::string frag);
-
+void load(std::string path);
 void setUniform(std::string name, float value);
 void setUniform(std::string name, std::weak_ptr<Texture> value);
 void setUniform(std::string name, glm::vec3 value);

@@ -12,7 +12,7 @@ class VertexBuffer
 {
 private:
   GLuint id;
-  int components;
+  int components=NULL;
   std::vector<GLfloat> data;
   bool dirty;
 

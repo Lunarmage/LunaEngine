@@ -1,7 +1,7 @@
 #include "Resources.h"
 #include "Resource.h"
 
-
+/*
 template<class T>
 std::shared_ptr<T> Resources::load(std::string path)
 {
@@ -25,3 +25,4 @@ std::shared_ptr<T> Resources::load(std::string path)
 	return temp;
 
 }
+*/

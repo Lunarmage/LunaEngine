@@ -14,10 +14,21 @@ std::shared_ptr<Core> Component::getCore()
 
 void Component::onDisplay()
 {
-
+	
 }
 
 void Component::onTick()
 {
+
+}
+
+void Component::onInit()
+{
+
+}
+
+void Component::onBegin()
+{
+
 
 }
