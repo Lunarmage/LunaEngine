@@ -34,7 +34,14 @@ public:
 		std::shared_ptr<T> NewComp = std::make_shared<T>();
 		NewComp->HostEntity = self;
 		components.push_back(NewComp);
-		NewComp->onInit();
+		NewComp->onInit(); 
+
+		if (typeid(T) == typeid(Camera))
+		{
+			//assign new camera reference to core
+
+
+		}
 		return NewComp;
 	}
 

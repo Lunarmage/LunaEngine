@@ -19,13 +19,11 @@ void MeshRenderer::onDisplay()
 	//get position in worldspace
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, HostEntity.lock()->getComponent<Transform>()->getPosition());
+	model = HostEntity.lock()->getComponent<Transform>()->getRenderData();
 	material->getShader()->setUniform("in_Model",model);
 
 	material->getShader()->setUniform("in_Texture", 0);
 	
-	
-	//assign shaderProgram
-	glUseProgram(material->getShader()->getID());
 
 	//assign texture
 	glActiveTexture(GL_TEXTURE0);
@@ -33,6 +31,9 @@ void MeshRenderer::onDisplay()
 	
 	material->getShader()->setUniform("in_Texture", 0);
 
+	
+	//assign shaderProgram
+	glUseProgram(material->getShader()->getID());
 	//draw mesh
 	glBindVertexArray(mesh.lock()->returnID());
 	glDrawArrays(GL_TRIANGLES, 0, mesh.lock()->getVertexCount());

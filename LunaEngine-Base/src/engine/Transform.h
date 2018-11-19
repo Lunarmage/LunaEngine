@@ -1,6 +1,9 @@
+#pragma once
 
 #include "glm/glm.hpp"
 #include "Component.h"
+
+
 
 class Transform: public Component
 {
@@ -28,3 +31,4 @@ glm::vec3 getScale();
 
 glm::mat4 getRenderData();
 };
+

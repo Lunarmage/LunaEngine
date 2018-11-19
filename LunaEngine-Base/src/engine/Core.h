@@ -9,7 +9,7 @@
 class Entity;
 class Keyboard;
 class Environment;
-
+class Camera;
 //class Resources;
 
 
@@ -25,14 +25,17 @@ public:
 	void stop();
 	std::shared_ptr<Entity> addEntity();
 	std::shared_ptr<Keyboard> getKeyboard();
-	std::shared_ptr<Environment> getEnvironment()
-		;
+	std::shared_ptr<Environment> getEnvironment();
+	
+	
 
 private:
 	std::shared_ptr<Environment> environment;
 	std::shared_ptr<Keyboard> keyBoard;
 	std::vector<std::shared_ptr<Entity>> Entities;
 
+	std::vector<std::shared_ptr<Camera>> cameras;
+	
 	std::shared_ptr<Resources> resources;
 	SDL_Window *window;
 	bool running;

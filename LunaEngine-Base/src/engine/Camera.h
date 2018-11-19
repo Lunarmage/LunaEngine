@@ -4,6 +4,7 @@
 class Camera: public Component
 {
 public:
+	void onInit();
 	glm::mat4 getViewMatrix();
 	void setOffset(glm::vec3 input);
 	void setRotation(glm::vec3 input);

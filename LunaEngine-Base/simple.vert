@@ -1,6 +1,8 @@
+#version 430 core
+
+uniform mat4 in_Model;
 uniform mat4 in_Projection;
 uniform mat4 in_View;
-uniform mat4 in_Model;
 
 attribute vec3 in_Position;
 attribute vec2 in_TexCoord;

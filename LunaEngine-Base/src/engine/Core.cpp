@@ -99,6 +99,7 @@ void Core::start()
 		//loop every entity tick 
 		float current=  SDL_GetTicks();
 		environment->setDeltaTime(current - last);
+		last = current;
 
 
 		for (std::vector<std::shared_ptr<Entity> >::iterator it = Entities.begin();
@@ -107,7 +108,7 @@ void Core::start()
 			if ((*it)->isKill())
 			{
 				//clear out it
-				//Entities.erase(it--);
+				Entities.erase(it--);
 
 			}
 			else
