@@ -27,6 +27,11 @@ void Mesh::load(std::string path)
 {
 
 	glGenVertexArrays(1, &id);
+	if (!id)
+	{
+		throw std::exception();
+	}
+
 	//check id works
 
 	buffers.resize(10);

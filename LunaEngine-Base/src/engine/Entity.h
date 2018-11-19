@@ -17,7 +17,7 @@ public:
 	template <typename T>
 	std::shared_ptr<T> getComponent()
 	{
-		for (int i = 0; i<components.size(); i++)
+		for (int i = 0; i<(components.size()); i++)
 		{
 			std::shared_ptr<T> TargetComponent = std::dynamic_pointer_cast<T>(components.at(i));
 			if (TargetComponent)

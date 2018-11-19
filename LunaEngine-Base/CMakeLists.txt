@@ -39,6 +39,7 @@ src/engine/Texture.cpp
 src/engine/MaterialAttribute.h
 src/engine/Shader.cpp
 src/engine/VertexBuffer.cpp
+src/engine/Camera.cpp
 
 
 

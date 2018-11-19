@@ -1,7 +1,9 @@
 #include "Shader.h"
-
+#include "Texture.h"
 #include <fstream>
 #include <iostream>
+
+#include <glm/ext.hpp>
 
 
 GLuint Shader::getID()
@@ -45,6 +47,7 @@ void Shader::create(std::string vert, std::string frag)
 		fragS += line + "\n";
 		}
 
+	file.close();
 
 	//set up shaders for GL
 	const GLchar *VertShad =vertS.c_str();
@@ -56,6 +59,7 @@ void Shader::create(std::string vert, std::string frag)
 
 	if (!success)
 	{//error
+		std::exception();
 	}	
 	
 	const GLchar *FragShad =fragS.c_str();
@@ -66,6 +70,7 @@ void Shader::create(std::string vert, std::string frag)
 
 	if (!success)
 	{//error
+		std::exception();
 	}
 
 	//create Program
@@ -83,7 +88,8 @@ void Shader::create(std::string vert, std::string frag)
 	glGetProgramiv(id,GL_LINK_STATUS, &success);
 
 	if (!success)
-	{//error
+	{	
+		throw std::exception();
 	}
 
 	glDetachShader(id, vertShadID);
@@ -116,8 +122,39 @@ void Shader::setUniform(std::string name, float value)
  	 }
 
  	 glUseProgram(id);
- 	 glUniform1f(uniformId, value);
+ 	 glUniform1i(uniformId, value);
   	 glUseProgram(0);
+
+
+}
+
+void Shader::setUniform(std::string name, glm::vec3 value)
+{
+	GLint uniformID = glGetUniformLocation(id, name.c_str());
+
+	if (uniformID == -1)
+	{
+		throw std::exception();
+	}
+	
+	glUseProgram(id);
+	glUniform3f(uniformID, value.x, value.y, value.z);
+	glUseProgram(0);
+}
+
+void Shader::setUniform(std::string name, glm::mat4 value) 
+{
+	GLint uniformID = glGetUniformLocation(id, name.c_str());
+
+	if (uniformID == -1)
+	{
+		throw std::exception();
+	}
+
+	glUseProgram(id);
+	glUniformMatrix4fv(uniformID, 1, GL_FALSE, glm::value_ptr(value));
+	glUseProgram(0);
+
 
 
 }
@@ -129,6 +166,11 @@ void Shader::setUniform (std::string name, std::weak_ptr<Texture> value)
  		 {
   		  throw std::exception();
   		}
+
+	glUseProgram(id);
+	glUniform1i(uniformID, 0);
+	glUseProgram(0);
+	return;
 
 
 	

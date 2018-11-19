@@ -10,6 +10,8 @@
 #include "Texture.h"
 #include "Shader.h"
 #include "Sound.h"
+#include "Transform.h"
+#include "Camera.h"
 
 
 

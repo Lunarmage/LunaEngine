@@ -2,6 +2,8 @@
 #include "Entity.h"
 #include <GL/glew.h>
 #include <algorithm>
+#include "Environment.h"
+
 //#include "Resources.h"
 
 
@@ -26,6 +28,15 @@ std::shared_ptr<Resources> Core::getResources()
 	return resources;
 }
 
+std::shared_ptr<Keyboard> Core::getKeyboard()
+{
+	return keyBoard;
+}
+
+std::shared_ptr<Environment> Core::getEnvironment()
+{
+	return environment;
+}
 
 std::shared_ptr<Core> Core::initialize()
 {
@@ -35,7 +46,8 @@ std::shared_ptr<Core> Core::initialize()
 	BaseCore->running =false;
 	BaseCore->self=BaseCore;
 	BaseCore->resources = Sresources;
-	
+	std::shared_ptr<Environment> sEnvironment = std::make_shared<Environment>();
+	BaseCore->environment = sEnvironment;
 	//Initialise Visuals/graphics first
 
 	if(SDL_Init(SDL_INIT_VIDEO) <0)
@@ -58,6 +70,8 @@ std::shared_ptr<Core> Core::initialize()
 	}
 	//initialise audio
 
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 
 
 
@@ -66,8 +80,10 @@ std::shared_ptr<Core> Core::initialize()
 
 void Core::start()
 {
+	float last = SDL_GetTicks();
 	running=true;
 	
+
 	while (running)
 		//usual SDL loop here
 	{
@@ -81,6 +97,9 @@ void Core::start()
 		}
 
 		//loop every entity tick 
+		float current=  SDL_GetTicks();
+		environment->setDeltaTime(current - last);
+
 
 		for (std::vector<std::shared_ptr<Entity> >::iterator it = Entities.begin();
 			it != Entities.end(); it++)
@@ -97,8 +116,9 @@ void Core::start()
 			}
 		}
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+		glClearColor(12.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 		//loop every entity display
 		for (std::vector<std::shared_ptr<Entity> >::iterator it = Entities.begin();
@@ -125,5 +145,6 @@ void Core::stop()
 
 Core::~Core()
 {
+	SDL_DestroyWindow(window);
 	SDL_Quit();
 }

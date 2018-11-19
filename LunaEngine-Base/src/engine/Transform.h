@@ -5,7 +5,7 @@
 class Transform: public Component
 {
 private:
-	
+	//I named everything local because I'm a bit stupid. Local Position is in fact world position for the purposes of graphics
 	glm::vec3 localPosition;
 	glm::vec3 localRotation;
 	glm::vec3 localScale;
@@ -21,4 +21,10 @@ void setLocalPosition(glm::vec3 input);
 void setLocalRotation(glm::vec3 input);
 void setLocalScale(glm::vec3 input);
 
+//return variables
+glm::vec3 getPosition();
+glm::vec3 getRotation();
+glm::vec3 getScale();
+
+glm::mat4 getRenderData();
 };

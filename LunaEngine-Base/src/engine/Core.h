@@ -24,12 +24,13 @@ public:
 	void start();
 	void stop();
 	std::shared_ptr<Entity> addEntity();
-	void cleanUP();
-
+	std::shared_ptr<Keyboard> getKeyboard();
+	std::shared_ptr<Environment> getEnvironment()
+		;
 
 private:
-	std::shared_ptr<Environment> Environment;
-	std::shared_ptr<Keyboard> KeyBoard;
+	std::shared_ptr<Environment> environment;
+	std::shared_ptr<Keyboard> keyBoard;
 	std::vector<std::shared_ptr<Entity>> Entities;
 
 	std::shared_ptr<Resources> resources;
